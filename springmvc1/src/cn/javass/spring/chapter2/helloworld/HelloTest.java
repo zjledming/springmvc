@@ -114,4 +114,16 @@ public class HelloTest {
 		Assert.assertEquals(3, listBean.getValues().size());
 	}
 
+	@Test
+	public void testBeanInject() {
+		BeanFactory beanFactory = new ClassPathXmlApplicationContext(
+				"chapter3/beanInject.xml");
+		// 通过构造器方式注入
+		HelloApi bean1 = beanFactory.getBean("bean1", HelloApi.class);
+		bean1.sayHello();
+		// 通过setter方式注入
+		HelloApi bean2 = beanFactory.getBean("bean2", HelloApi.class);
+		bean2.sayHello();
+	}
+
 }
